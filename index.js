@@ -14,13 +14,11 @@ class EtcdWatcher extends EventEmitter {
    */
   constructor(key, endpoint) {
     super();
-    
     debug(`Watching for key: ${key}`);
     
-    endpoint = endpoint || 'http://127.0.0.1:2379/v2/keys/';
-    
+    this._endpoint = endpoint || 'http://127.0.0.1:2379/v2/keys/';
     this._stream = null;
-    this._url = endpoint + key + '?recursive=false&wait=true&waitIndex=0';
+    this._url = this._endpoint + key + '?recursive=false&wait=true&waitIndex=0';
     
     this._errorHandler = error => {
       if (error === 'ETIMEDOUT') {
@@ -50,11 +48,25 @@ class EtcdWatcher extends EventEmitter {
   }
   
   /**
+   * Stop watching
+   */
+  abort() {
+    this._unlinkStream();
+  }
+  
+  /**
+   * @private
+   */
+  _unlinkStream() {
+    this._stream = null;
+    delete this._stream;
+  }
+  
+  /**
    * @private
    */
   _makeStream() {
-    this._stream = null;
-    delete this._stream;
+    this._unlinkStream();
     this._stream = got.stream.get(this._url);
     this._stream.on('error', this._errorHandler);
     this._stream.on('data', this._dataHandler);

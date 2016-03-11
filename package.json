@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RiderSx/node-etcd-watcher.git"
+    "url": "git+https://github.com/trynpay/node-etcd-watcher.git"
   },
   "keywords": [
     "etcd"
@@ -16,9 +16,9 @@
   "author": "Alexander Kukhta",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/RiderSx/node-etcd-watcher/issues"
+    "url": "https://github.com/trynpay/node-etcd-watcher/issues"
   },
-  "homepage": "https://github.com/RiderSx/node-etcd-watcher#readme",
+  "homepage": "https://github.com/trynpay/node-etcd-watcher#readme",
   "dependencies": {
     "debug": "2.2.0",
     "got": "6.2.0"
