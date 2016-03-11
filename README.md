@@ -10,7 +10,7 @@ $ npm i --save node-etcd-watcher
 ```js
 'use strict';
 
-const EtcdWatcher = require('node-etcd-watcher);
+const EtcdWatcher = require('node-etcd-watcher');
 
 const watcher = new EtcdWatcher('some-key');
 
